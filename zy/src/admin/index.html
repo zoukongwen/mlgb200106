@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html{background: #f00;}
+    </style>
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+</head>
+<body>
+    这个是什么呢，是开发版！
+    撒可见度很疯狂十点十分点肥sfsd 
+    的fgg sd
+    <div class="bxo1">
+        <input type="text" id="txt1">
+        <input type="text" id="txt2">
+        <input type="button" id="btn1" value="get提交">
+    </div>
+    <br>
+    <div class="box2">
+        <input type="text" id="txt3">
+        <input type="text" id="txt4">
+        <input type="button" id="btn2" value="post提交">
+    </div>
+</body>
+<script src="./js/index.js"></script>
+<!-- <script src="../jquery-1.11.3.js"></script> -->
+<script>
+     var box1 = document.querySelector(".box1");
+    var txt1 = document.querySelector("#txt1");
+    var txt2 = document.querySelector("#txt2");
+    var btn1 = document.querySelector("#btn1");
+    var box2 = document.querySelector(".box2");
+    var txt3 = document.querySelector("#txt3");
+    var txt4 = document.querySelector("#txt4");
+    var btn2 = document.querySelector("#btn2");
+
+    btn1.onclick = function(){
+        var url = "https://wanandroid.com/wxarticle/chapters/json";
+        ajaxGet(url,(res)=>{
+                console.log(res);
+                console.log(typeof res);
+            },{
+                user:txt1.value,
+                pass:txt2.value
+                
+            })
+    }
+    btn2.onclick = function(){
+        var url = "/api/chapters/json";
+        ajaxPost(url,(res)=>{
+                console.log(res);
+                console.log(typeof res);
+            },{
+                user:txt3.value,
+                pass:txt4.value
+                
+            })
+    }
+    function ajaxGet(url,cb,data){
+        data = data || {};
+        var str = "";
+        for(var i in data){
+            str += `${i}=${data[i]}&`;
+        }
+        var d = new Date();
+        url = url + "?" + str + "__qft="+d.getTime();
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open("get",url,true);
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                cb(xhr.responseText)
+            }
+        }
+        xhr.send();
+    }
+
+   function ajaxPost(url,callback,data){
+        data = data || {};
+        var str = "";
+        for(var i in data){
+            str += `${i}=${data[i]}&`;
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST",url,true);
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                callback(xhr.responseText);
+            }
+        }
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xhr.send(str);
+    } 
+</script>
+</html>
