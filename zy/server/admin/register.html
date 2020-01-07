@@ -4,9 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>注册</title>
+    <link rel="stylesheet" href="../css/zcstyle.css">
 </head>
 <body>
-    
+    <div id="top">
+        <div class="margin">
+            <a href="##" id="logo"></a>
+            <div class="t_r">
+                嘿，欢迎来到美鲜冻品商城！
+                <a href="##">请登录</a>
+            </div>
+        </div>
+    </div>
+    <div id="banner"></div>
+    <div id="zc">
+        <div class="margin">
+            <div class="zc">
+                <div class="zc_t">
+                    <p>注册新用户</p>
+                    <p class="zc_t_r">已注册，<a href="##">去登录</a></p>
+                </div>
+                <div class="zc_c">
+                    <form action="">
+                        <div class="register_inf" id="mobile_div" style="display:block;">
+                            <div class="yh"><span>*</span>验证手机：</div>
+                            <input class="user" name="extend_field5" id="extend_field5" type="text" placeholder="请输入验证手机号">
+                            <label id="confirm_mobile_notice" style="color:#F00;"></label>
+                        </div>
+                        <div class="register_inf register_inf2">
+                            <div class="yh">
+                                <span>*</span>密码：
+                            </div>
+                            <div class="yh1">
+                                <input name="password" type="password" placeholder="请输入密码" id="password" class="user"><label id="password_notice" style="color:#F00;"></label>
+                            </div><br>
+                            <div class="qc"></div>
+                                <table id="table_level" width="145" border="0" cellspacing="0" cellpadding="1">
+                                    <tbody>
+                                        <tr align="center">
+                                        <td width="33%" id="pwd_lower">弱</td>
+                                        <td width="33%" id="pwd_middle">中</td>
+                                        <td width="33%" id="pwd_high">强</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                        <div class="register_inf register_inf2" id="confirm_pwd_div">
+                            <div class="yh">
+                                <span>*</span>确认密码：
+                            </div>
+                            <input id="confirm_password" class="user" name="confirm_password" type="password" placeholder="确认密码" onblur="check_confirm_password(this.value);" autocomplete="off">
+                            <label id="confirm_password_notice" style="color:#F00;"></label>
+                        </div>
+                        <div class="xy">
+                            <input style="margin-top:10px;" name="agreement" type="checkbox" value="1" checked="checked">我已阅读并同意<span><a href="article.php?cat_id=-1" target="new">用户协议</a></span>
+                        </div>
+                        <div class="register_btn"> <input name="act" type="hidden" value="act_register">
+                            <input name="Submit" type="submit" class="btn-img btn-regist" id="registsubmit" value="提交">
+                        </div>
+                    </form>
+                    <div class="zc_c_r">
+                        <img src="../images/regist_index.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="floot_1">
+                    <div class="floot_4">
+                            <span>本网站有关内容和图片除了自有版权外，其它均转载自网络，如有侵权请联系删除（4006-728-726）</span>
+                            <span>© 2005-2020 美鲜冻品商城 版权所有，并保留所有权利。</span>
+                            <span>济南市历下区龙奥北路8号海尔玉兰广场3号楼606             Tel: 4006-728-726      </span>
+                            <span>ICP备案证书号:<a href="##/" target="_blank" rel="nofollow">鲁ICP备11002915号</a><br>
+                            </span>
+                        </div>
+                        <div class="floot_5">
+                            <ul>
+                                <li><img src="../images/footer_5_1.jpg" width="110" height="49"></li>
+                                <li><img src="../images/footer_5_1.jpg" width="110" height="49"></li>
+                                <li><img src="../images/footer_5_1.jpg" width="110" height="49"></li>
+                                <li><img src="../images/footer_5_1.jpg" width="110" height="49"></li>
+                                <li><img src="../images/footer_5_1.jpg" width="110" height="49"></li>
+                                
+                            </ul>
+                        </div>
+            </div>
+        </div>
+        
+    </div>
 </body>
 </html>

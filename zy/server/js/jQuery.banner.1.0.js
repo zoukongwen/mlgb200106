@@ -82,7 +82,8 @@
             console.log("左")
             
             if(that._lyobj.index == 0){
-                that._lyobj.index = that._lyobj.img.length / 4 -1;
+                
+                that._lyobj.index = that._lyobj.img.length / 4-1;
                 that._lyobj.iPrev = 0;
             }else{
                 that._lyobj.iPrev = that._lyobj.index;
@@ -90,13 +91,14 @@
             }
             console.log(that._lyobj.index)
             // console.log(that._lyobj.iPrev)
-            that._lyobj.btnMove(1);
+            that._lyobj.btnMove(-1);
         }
         this._lyobj.rightClick = function(){
             console.log("右")
-            if(that._lyobj.index == that._lyobj.img.length / 4 -1){
+            if(that._lyobj.index == that._lyobj.img.length / 4-1){
+                
                 that._lyobj.index = 0;
-                that._lyobj.iPrev = that._lyobj.img.length / 4 -1;
+                that._lyobj.iPrev = that._lyobj.img.length / 4-1;
             }else{
                 that._lyobj.iPrev = that._lyobj.index;
                 that._lyobj.index++;
@@ -114,6 +116,7 @@
             that.find(".imgbox").eq(0).stop().animate({
                 left:this.wid * type * this.index * 4
             },this.moveTime);
+            console.log(this.index)
         // .end().eq(this.index).css({
         //         left:- this.wid * type
         //     }).stop().animate({
@@ -203,18 +206,18 @@
 
 
         // //这里判断是否需要自动播放先
-        // if(this._lyobj.autoPlay){
-        //     this.t = setInterval(()=>{
-        //         this._lyobj.rightClick();
-        //     },this._lyobj.delayTime)
-        // }
-        // this.hover(function(){
-        //     clearInterval(that.t);
-        // },function(){
-        //     that.t = setInterval(()=>{
-        //         that._lyobj.rightClick();
-        //     },that._lyobj.delayTime)
-        // })
+        if(this._lyobj.autoPlay){
+            this.t = setInterval(()=>{
+                this._lyobj.rightClick();
+            },this._lyobj.delayTime)
+        }
+        this.hover(function(){
+            clearInterval(that.t);
+        },function(){
+            that.t = setInterval(()=>{
+                that._lyobj.rightClick();
+            },that._lyobj.delayTime)
+        })
 
     }
 })($,jQuery);

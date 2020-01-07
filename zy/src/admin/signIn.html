@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>登录</title>
+    <link rel="stylesheet" href="../css/dlstyle.css">
 </head>
 <body>
-    
+    <div id="top">
+        <div class="margin">
+            <a href="##" id="logo"></a>
+            <div class="t_r">
+                嘿，欢迎来到美鲜冻品商城！
+            </div>
+        </div>
+    </div>
+    <div id="dl">
+        <div class="margin">
+            <form action="">
+                <div class="content_right">
+                        <div class="content_top">
+                            <h2><span id="login_tab1" class="on" onclick="change_login_way('user_name')">登录</span><span id="login_tab2" onclick="change_login_way('verify')" class="">验证码登录</span></h2>
+                        </div>
+                        <div class="login_nr">
+                            <div id="user_name_login" style="display: block;">
+                                <input id="username" class="user" name="username" type="text" placeholder="请输入用户名/邮箱/手机号码">
+                                <input id="password" class="pwd" name="password" type="password" placeholder="请输入密码" autocomplete="off">
+                                <div class="infor">
+                                    <div class="rem"><input id="remember" name="remember" type="checkbox" value="1">记住我</div>
+                                    <p class="forget"><a href="user.php?act=get_password">忘记密码</a></p>
+                                </div>
+                            </div>
+                            <!-- <div id="mobile_verify_login" class="fix" style="display: none;">
+                                <input id="mobile_phone" class="user" name="mobile_phone" type="text" placeholder="请输入手机号码">
+                                <div class="ver" style="margin-top: 10px;">
+                                    <input type="text" class="user" id="code_math_mobile" maxlength="4" placeholder="请输入右侧验证码" style="width: 112px;float: left;">
+                                    <img src="code_num.php" id="getcode_math_mobile" title="看不清，点击换一张" align="absmiddle" style="float: left;cursor: pointer;margin-left:6px;">
+                                    <a href="javascript:;" class="yz_verify_refresh" style="padding-left: 4px;">刷新一下?</a>
+                                </div>
+                                <input id="mobile_verify" class="pwd" style="width:130px; float:left;" name="mobile_verify" type="text" placeholder="请输入短信验证码" autocomplete="off">
+                                <input type="button" id="get_mobile_verify" onclick="get_verify()" value="获取短信验证码">
+                                <i id="icon_warm"></i>
+                                <span>注：验证码60秒内有效，过期请重新获取</span>
+                            </div>
+                            <div class="qc"></div> -->
+                            <div class="login_btn">
+                                <input name="act" type="hidden" value="act_login">
+                                <input type="hidden" name="back_act" value="http://www.emeixian.com/">
+                                <input id="loginsubmit" name="loginsubmit" type="submit" value="登 录">
+                            </div>
+                            <h3>没有账号 , <a href="user.php?act=register">去注册 &gt; </a></h3>
+                        </div>
+                </div>
+            </form>
+        </div>
+        
+    </div>
 </body>
 </html>

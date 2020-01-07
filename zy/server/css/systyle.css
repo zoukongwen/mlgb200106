@@ -22,7 +22,6 @@ body {
   /* Remove highlight on tap event*/
   -moz-tap-highlight-color: rgba(0, 0, 0, 0);
   -ms-tap-highlight-color: rgba(0, 0, 0, 0);
-  tap-highlight-color: rgba(0, 0, 0, 0);
   /* -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -316,62 +315,252 @@ blockquote:before, blockquote:after, q:before, q:after {
       float: left;
       margin-right: 8px; }
 
-.loft .loft_t {
+.loft {
   overflow: hidden; }
-
-.loft .loft_t_l {
-  float: left;
-  text-align: center; }
-  .loft .loft_t_l span {
-    display: block;
-    float: left; }
-  .loft .loft_t_l span:nth-child(1) {
-    width: 50px;
-    height: 46px;
-    background: url(../images/header_icon.png) no-repeat center; }
-  .loft .loft_t_l span:nth-child(2) {
-    font: 20px/42px "";
-    margin-left: 5px;
-    color: #444; }
-  .loft .loft_t_l span:nth-child(3) {
-    color: #999;
-    font: 14px/42px "";
-    margin-left: 15px; }
-  .loft .loft_t_l a {
-    display: block;
-    float: left;
-    color: #666;
-    font: 12px/42px "";
-    margin-left: 20px; }
-    .loft .loft_t_l a i {
-      background: url(); }
-
-.loft .loft_t_r {
-  float: right;
-  width: 244px;
-  height: 42px;
-  border: 1px #eee solid;
-  border-bottom: none;
-  position: relative; }
-  .loft .loft_t_r span {
-    font: 16px/42px "";
-    font-weight: normal;
-    color: #157929;
-    padding-left: 10px; }
-  .loft .loft_t_r a {
-    font: 12px/42px "";
-    color: #666;
-    position: absolute;
-    top: 0;
-    right: 10px; }
-
-.loft .loft_b {
-  border: #1a9733 1px solid; }
-  .loft .loft_b .loft_b_l {
-    float: left;
-    width: 955px;
-    height: 243px;
-    border: 1px #eee solid;
+  .loft .loft_t {
     overflow: hidden; }
-  .loft .loft_b .loft_b_r {
+  .loft .loft_t_l {
+    float: left;
+    text-align: center; }
+    .loft .loft_t_l span {
+      display: block;
+      float: left; }
+    .loft .loft_t_l span:nth-child(1) {
+      width: 50px;
+      height: 46px;
+      background: url(../images/header_icon.png) no-repeat center; }
+    .loft .loft_t_l span:nth-child(2) {
+      font: 20px/42px "";
+      margin-left: 5px;
+      color: #444; }
+    .loft .loft_t_l span:nth-child(3) {
+      color: #999;
+      font: 14px/42px "";
+      margin-left: 15px; }
+    .loft .loft_t_l a {
+      display: block;
+      float: left;
+      color: #666;
+      font: 12px/42px "";
+      margin-left: 20px; }
+      .loft .loft_t_l a i {
+        background: url(); }
+  .loft .loft_t_r {
+    float: right;
+    width: 244px;
+    height: 42px;
+    border: 1px #eee solid;
+    border-bottom: none;
+    position: relative; }
+    .loft .loft_t_r span {
+      font: 16px/42px "";
+      font-weight: normal;
+      color: #157929;
+      padding-left: 10px; }
+    .loft .loft_t_r a {
+      font: 12px/42px "";
+      color: #666;
+      position: absolute;
+      top: 0;
+      right: 10px; }
+  .loft .loft_b {
+    border: #1a9733 1px solid; }
+    .loft .loft_b .loft_b_l {
+      float: left;
+      width: 955px;
+      height: 243px;
+      border: 1px #eee solid;
+      overflow: hidden; }
+    .loft .loft_b .loft_b_r {
+      float: right; }
+      .loft .loft_b .loft_b_r ul .last {
+        height: 118px; }
+      .loft .loft_b .loft_b_r ul li {
+        width: 204px;
+        height: 27px;
+        font: 12px/27px ""; }
+        .loft .loft_b .loft_b_r ul li a {
+          color: #666; }
+        .loft .loft_b .loft_b_r ul li p {
+          overflow: hidden; }
+        .loft .loft_b .loft_b_r ul li h3 {
+          overflow: hidden; }
+
+#tc .green_border {
+  width: 100%;
+  height: 42px;
+  display: block;
+  border-bottom: 1px solid #1eaa39; }
+  #tc .green_border .loft_left {
+    height: 43px;
+    width: 400px;
+    line-height: 43px;
+    float: left; }
+    #tc .green_border .loft_left .floor_f1 {
+      width: 36px;
+      height: 24px;
+      background: url(../images/loft_01.jpg) no-repeat;
+      float: left;
+      margin-top: 12px;
+      line-height: 24px;
+      color: #FFF;
+      font-size: 16px;
+      padding-left: 2px; }
+    #tc .green_border .loft_left .floor_text {
+      font-size: 20px;
+      margin-left: 55px;
+      color: #444;
+      float: left;
+      text-align: center; }
+    #tc .green_border .loft_left .floor_explain {
+      float: left;
+      color: #999;
+      font-size: 14px;
+      margin-left: 20px; }
+    #tc .green_border .loft_left a {
+      width: 90px;
+      color: #666;
+      font-size: 12px;
+      float: left;
+      margin-left: 25px; }
+  #tc .green_border .loft_right {
+    height: 43px;
+    line-height: 43px;
     float: right; }
+    #tc .green_border .loft_right .head {
+      position: relative; }
+      #tc .green_border .loft_right .head li {
+        float: left;
+        width: 82px;
+        height: 32px;
+        line-height: 42px;
+        color: #646464;
+        cursor: default;
+        word-break: break-all;
+        word-wrap: break-word;
+        position: relative; }
+        #tc .green_border .loft_right .head li a {
+          text-align: center;
+          color: #666;
+          font: 12px/42px "";
+          width: 100%;
+          border: 1px solid #666;
+          border-bottom: none;
+          position: absolute;
+          z-index: 10;
+          right: 0;
+          background: #fff;
+          height: 42px;
+          top: -1px; }
+          #tc .green_border .loft_right .head li a span {
+            display: block; }
+        #tc .green_border .loft_right .head li .current {
+          border-left: 1px solid #1eaa39;
+          border-right: 1px solid #1eaa39;
+          border-top: 2px solid #1eaa39; }
+        #tc .green_border .loft_right .head li a:hover {
+          border-left: 1px solid #1eaa39;
+          border-right: 1px solid #1eaa39;
+          border-top: 2px solid #1eaa39; }
+
+.floot {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-top: 1px solid #eeeeee;
+  background: #FFF;
+  font-family: Verdana, "宋体";
+  padding-bottom: 50px; }
+  .floot .floot_1 ul {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-bottom: 30px; }
+    .floot .floot_1 ul li {
+      width: 300px;
+      height: 70px;
+      float: left;
+      margin-top: 30px; }
+      .floot .floot_1 ul li i {
+        width: 46px;
+        height: 46px;
+        background: url(../images/footer01.png);
+        background-repeat: no-repeat;
+        display: block;
+        float: left;
+        margin-right: 5px; }
+      .floot .floot_1 ul li p {
+        height: 30px;
+        margin-left: 5px;
+        color: #444444;
+        font-size: 18px;
+        font-family: "黑体"; }
+      .floot .floot_1 ul li span {
+        height: 14px;
+        text-align: left;
+        display: block;
+        color: #999999;
+        font-size: 14px;
+        font-weight: normal;
+        font-family: "黑体"; }
+  .floot .floot_2 ul {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-bottom: 30px; }
+    .floot .floot_2 ul li {
+      width: 200px;
+      height: auto;
+      float: left;
+      padding-left: 0px; }
+      .floot .floot_2 ul li h4 {
+        width: auto;
+        height: 22px;
+        font-size: 16px;
+        color: #199733;
+        text-align: left;
+        font-family: "黑体"; }
+      .floot .floot_2 ul li a {
+        width: auto;
+        height: 24px;
+        line-height: 24px;
+        font-size: 12px;
+        color: #666666;
+        display: block;
+        text-align: left; }
+  .floot .floot_3 {
+    padding: 20px;
+    font-size: 12px;
+    line-height: 26px;
+    text-align: center; }
+    .floot .floot_3 a {
+      color: #666;
+      margin-right: 18px;
+      float: left;
+      display: block;
+      white-space: nowrap; }
+  .floot .floot_4 {
+    height: 67px;
+    margin: 10px auto;
+    margin-top: 20px;
+    text-align: center; }
+    .floot .floot_4 span {
+      height: 14px;
+      display: block;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 12px;
+      color: #666666; }
+      .floot .floot_4 span a {
+        font-size: 12px;
+        color: #666666; }
+  .floot .floot_5 {
+    height: 49px;
+    margin-top: 20px;
+    overflow: hidden; }
+    .floot .floot_5 ul {
+      width: 576px;
+      margin: 0 auto; }
+      .floot .floot_5 ul li {
+        float: left;
+        margin-right: 5px; }
