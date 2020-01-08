@@ -811,13 +811,13 @@
                 <div class="loft_right">
                     <div class="head  headfloor_tab">
                         <ul class="tab_aa">
-                        <li class="tab_head on_tap"><a href="javascript:;" class="current"><span>推荐商品</span></a></li>
-                        
-                    <li class="tab_head"><a href="javascript:;"><span>西式调料</span></a></li>
-                    <li class="tab_head"><a href="javascript:;"><span>面</span></a></li>
-                    <li class="tab_head"><a href="javascript:;"><span>罐头</span></a></li>
-                    <li class="tab_head"><a href="javascript:;"><span>中式调料</span></a></li>
-                            </ul>
+                            <li class="tab_head on_tap"><a href="javascript:;" class="current"><span>推荐商品</span></a></li>
+                            
+                            <li class="tab_head"><a href="javascript:;"><span>西式调料</span></a></li>
+                            <li class="tab_head"><a href="javascript:;"><span>面</span></a></li>
+                            <li class="tab_head"><a href="javascript:;"><span>罐头</span></a></li>
+                            <li class="tab_head"><a href="javascript:;"><span>中式调料</span></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -826,14 +826,7 @@
     <div class="flot_tab">
         <div class="margin">
             <ul class="goods_cate">
-                <li>
-                    <h5>商品分类</h5>   
-                    <a href="category-550-b0.html" target="_blank">西式调料</a>
-                    <a href="category-181-b0.html" target="_blank">面</a>
-                    <a href="category-183-b0.html" target="_blank">罐头</a>
-                    <a href="category-549-b0.html" target="_blank">中式调料</a>
-                    <a href="category-280-b0.html" target="_blank">豆制品</a>
-                </li>
+                
             </ul>
         </div>
         
@@ -976,7 +969,54 @@
     class sY{
         constructor(){
             this.banner = $(".banner1");
+            // this.txt = $("#searchForm").find(".text");
+            this.ss_ul = $(".flot_tab").find("ul");
+            this.url = "../json/csearch.json";
+            this.addEvent();
             this.init();
+        }
+        addEvent(){
+            var that = this;
+            // this.ss_ul.on("click","a",function(){
+            //     var a = this;
+            //     console.log(this);
+            //     // that.cxq(a);
+            // })
+            // this.btn.on("click",function(){
+                that.cSe();
+            // })
+        }
+        // cxq(a){
+        //     console.log(a)
+        //     console.log(this.res)
+        //     localStorage.setItem("id",a.getAttribute("ico"));
+        //     location.href ="cDetails.html";
+        //     console.log(a.getAttribute("ico"))
+        // }
+        cSe(){
+            var that = this;
+            $.ajax({
+                url:that.url,
+                success:function(res){
+                    that.res = res;
+                    that.display();
+                console.log(that.res);
+                }
+            })
+        }
+        display(){
+            var str = "";
+            for(var i = 0;i < this.res.length;i++){
+                    console.log(1111)
+                    str += `<li>
+                                <a href="##" ico="${this.res[i].id}">
+                                    <img src="${this.res[i].img}" alt="">
+                                    <p class="ss_b_p">${this.res[i].Price}</p>
+                                    <p>${this.res[i].brief}</p>
+                                </a>
+                            </li>`
+            }
+            this.ss_ul.html(str);
         }
         init(){
             this.banner.banner({
@@ -1004,9 +1044,11 @@
                 width:238,              //可选，默认1000
                 height:243              //可选，默认300
             });
+
         }
         
     }
     new sY;
+    
 </script>
 </html>

@@ -26,10 +26,10 @@
                     <p class="zc_t_r">已注册，<a href="##">去登录</a></p>
                 </div>
                 <div class="zc_c">
-                    <form action="">
+                    <form action="##">
                         <div class="register_inf" id="mobile_div" style="display:block;">
-                            <div class="yh"><span>*</span>验证手机：</div>
-                            <input class="user" name="extend_field5" id="extend_field5" type="text" placeholder="请输入验证手机号">
+                            <div class="yh"><span>*</span>用户名：</div>
+                            <input class="user" name="extend_field5" id="extend_field5" type="text" placeholder="请输入用户名">
                             <label id="confirm_mobile_notice" style="color:#F00;"></label>
                         </div>
                         <div class="register_inf register_inf2">
@@ -39,8 +39,13 @@
                             <div class="yh1">
                                 <input name="password" type="password" placeholder="请输入密码" id="password" class="user"><label id="password_notice" style="color:#F00;"></label>
                             </div><br>
-                            <div class="qc"></div>
-                                <table id="table_level" width="145" border="0" cellspacing="0" cellpadding="1">
+                            <div class="yz">
+                                <input id="yz" class="yz_m" name="confirm_password" type="text" placeholder="请输入验证码">
+                                <input type="button" name="" id="sx" value="点击刷新">
+                                <div class="yz_m_m"></div>
+                            </div>
+                            <!-- <div class="qc"></div> -->
+                                <!-- <table id="table_level" width="145" border="0" cellspacing="0" cellpadding="1">
                                     <tbody>
                                         <tr align="center">
                                         <td width="33%" id="pwd_lower">弱</td>
@@ -48,20 +53,20 @@
                                         <td width="33%" id="pwd_high">强</td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table> -->
                         </div>
-                        <div class="register_inf register_inf2" id="confirm_pwd_div">
+                        <!-- <div class="register_inf register_inf2" id="confirm_pwd_div">
                             <div class="yh">
                                 <span>*</span>确认密码：
                             </div>
-                            <input id="confirm_password" class="user" name="confirm_password" type="password" placeholder="确认密码" onblur="check_confirm_password(this.value);" autocomplete="off">
+                            <input id="confirm_password" class="user" name="confirm_password" type="password" placeholder="确认密码">
                             <label id="confirm_password_notice" style="color:#F00;"></label>
-                        </div>
+                        </div> -->
                         <div class="xy">
-                            <input style="margin-top:10px;" name="agreement" type="checkbox" value="1" checked="checked">我已阅读并同意<span><a href="article.php?cat_id=-1" target="new">用户协议</a></span>
+                            <input style="margin-top:10px;" name="agreement" type="checkbox" value="1" checked="checked">我已阅读并同意<a href="##" target="new">用户协议</a>
                         </div>
                         <div class="register_btn"> <input name="act" type="hidden" value="act_register">
-                            <input name="Submit" type="submit" class="btn-img btn-regist" id="registsubmit" value="提交">
+                            <input name="button" type="button" class="btn-img btn-regist" id="registsubmit" value="提交">
                         </div>
                     </form>
                     <div class="zc_c_r">
@@ -92,4 +97,98 @@
         
     </div>
 </body>
+<script src="../js/jquery-1.11.3.js"></script>
+
+<!-- <script src="./signIn.html"></script> -->
+<script>
+    class Register{
+        constructor(){
+            this.user = $(".zc_c").find("#extend_field5");
+            this.pass1 = $(".zc_c").find("#password");
+            this.pass2 = $(".zc_c").find("#confirm_password");
+            this.btn = $("form").find("#registsubmit");
+            this.span = $("form").find("span");
+            this.yz = $("form").find("#yz");
+            this.sx = $("form").find("#sx");
+            this.yzm = $("form").find(".yz_m_m");
+
+            this.addEvent();
+        }
+        addEvent(){
+            var that = this;
+            this.btn.on("click",function(){
+                that.u = that.user.val();
+                that.p = that.pass1.val();
+                that.setData()
+            })
+
+        }
+        setData(){
+            // localStorage:[{user:"admin",pass:123,onoff:0},{},......]
+            this.msg = localStorage.getItem("userMsg") ? JSON.parse(localStorage.getItem("userMsg")) : [];
+
+            var b = this.msg.some((val)=>{
+                return val.user === this.u;
+            })
+            if(b){
+                // this.span.css({
+                //     color:"#000"
+                // });
+                $("<div class='mssc'>你这个用户名太火了，换一个吧</div>").css({
+                    width:400,
+                    height:400,
+                    background:"#fff",
+                    border:"1px solid #0f0",
+                    fontSize:"16px",
+                    lineHeight:"400px",
+                    textAlign:"center",
+                    position:"absolute",
+                    left:0,
+                    right:0,
+                    top:0,
+                    bottom:0,
+                    margin:"auto"
+                }).appendTo("body");
+                setTimeout(() => {
+                    $(".mssc").remove();
+                    this.user.val("");
+                    this.pass1.val("");
+                    this.pass2.val("");
+                }, 3000);
+
+            }else{
+
+                this.msg.push({
+                    user:this.u,
+                    pass:this.p,
+                    onoff:0
+                })
+                localStorage.setItem("userMsg",JSON.stringify(this.msg));
+                $("<div>恭喜注册功能，3秒后跳转到<a href='./signIn.html'>登录</a></div>").css({
+                    width:400,
+                    height:400,
+                    background:"#fff",
+                    border:"1px solid #0f0",
+                    fontSize:"16px",
+                    lineHeight:"400px",
+                    textAlign:"center",
+                    position:"absolute",
+                    left:0,
+                    right:0,
+                    top:0,
+                    bottom:0,
+                    margin:"auto"
+                }).appendTo("body");
+
+// .html("恭喜注册功能，3秒后跳转到<a href='http://localhost:83/admin/signIn.html'>登录</a>")
+                setTimeout(() => {
+                    location.href = "./signIn.html";
+                }, 3000);
+            }
+        }
+    }
+
+    new Register();
+   
+</script>
 </html>

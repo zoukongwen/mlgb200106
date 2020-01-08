@@ -18,14 +18,14 @@
     </div>
     <div id="dl">
         <div class="margin">
-            <form action="">
+            <form action="##">
                 <div class="content_right">
                         <div class="content_top">
-                            <h2><span id="login_tab1" class="on" onclick="change_login_way('user_name')">登录</span><span id="login_tab2" onclick="change_login_way('verify')" class="">验证码登录</span></h2>
+                            <h2><span id="login_tab1" class="on" onclick="change_login_way('user_name')">登录</span></h2>
                         </div>
                         <div class="login_nr">
                             <div id="user_name_login" style="display: block;">
-                                <input id="username" class="user" name="username" type="text" placeholder="请输入用户名/邮箱/手机号码">
+                                <input id="username" class="user" name="username" type="text" placeholder="请输入用户名">
                                 <input id="password" class="pwd" name="password" type="password" placeholder="请输入密码" autocomplete="off">
                                 <div class="infor">
                                     <div class="rem"><input id="remember" name="remember" type="checkbox" value="1">记住我</div>
@@ -48,9 +48,9 @@
                             <div class="login_btn">
                                 <input name="act" type="hidden" value="act_login">
                                 <input type="hidden" name="back_act" value="http://www.emeixian.com/">
-                                <input id="loginsubmit" name="loginsubmit" type="submit" value="登 录">
+                                <input id="loginsubmit" name="loginsubmit" type="button" value="登 录">
                             </div>
-                            <h3>没有账号 , <a href="user.php?act=register">去注册 &gt; </a></h3>
+                            <h3>没有账号 , <a href="./register.html">去注册 &gt; </a></h3>
                         </div>
                 </div>
             </form>
@@ -58,4 +58,107 @@
         
     </div>
 </body>
+<script src="../js/jquery-1.11.3.js"></script>
+<script>
+    class Login{
+        constructor(){
+            this.user = $("form").find("#username");
+            this.pass = $("form").find("#password");
+            this.btn = $("form").find("#loginsubmit");
+            this.span = $("form").find("#remember");
+
+            this.addEvent();
+        }
+        addEvent(){
+            var that = this;
+            this.btn.on("click",function(){
+                that.u = that.user.val();
+                that.p = that.pass.val();
+                that.getData();
+            });
+        }
+        getData(){
+            this.msg = localStorage.getItem("userMsg") ? JSON.parse(localStorage.getItem("userMsg")) : [];
+
+            var b = true;
+            for(var i=0;i<this.msg.length;i++){
+                if(this.msg[i].user === this.u){
+                    b = false;
+                    if(this.msg[i].pass === this.p){
+                        $("<div>登录成功，3秒后跳转到<a href='./homePage.html'>首页</div>").css({
+                            width:400,
+                            height:400,
+                            background:"#fff",
+                            border:"1px solid #0f0",
+                            fontSize:"16px",
+                            lineHeight:"400px",
+                            textAlign:"center",
+                            position:"absolute",
+                            left:0,
+                            right:0,
+                            top:0,
+                            bottom:0,
+                            margin:"auto"
+                        }).appendTo("body");
+                        setTimeout(() => {
+                            location.href = "./homePage.html";
+                        }, 3000);
+
+                        this.msg[i].onoff = 1;
+                        localStorage.setItem("userMsg",JSON.stringify(this.msg));
+
+                    }else{
+                        $("<div class='mssc'>密码不对，重新输入密码</div>").css({
+                            width:400,
+                            height:400,
+                            background:"#fff",
+                            border:"1px solid #0f0",
+                            fontSize:"16px",
+                            lineHeight:"400px",
+                            textAlign:"center",
+                            position:"absolute",
+                            left:0,
+                            right:0,
+                            top:0,
+                            bottom:0,
+                            margin:"auto"
+                        }).appendTo("body");
+                        setTimeout(() => {
+                            $(".mssc").remove();
+                            this.user.val("");
+                            this.pass1.val("");
+                            this.pass2.val("");
+                        }, 3000);
+                    }
+                    break;
+                }
+            }
+            if(b){
+                $("<div class='mssc'>你的用户名还没有注册，去<a href='./register.html'>注册</a>吧</div>").css({
+                    width:400,
+                    height:400,
+                    background:"#fff",
+                    border:"1px solid #0f0",
+                    fontSize:"16px",
+                    lineHeight:"400px",
+                    textAlign:"center",
+                    position:"absolute",
+                    left:0,
+                    right:0,
+                    top:0,
+                    bottom:0,
+                    margin:"auto"
+                }).appendTo("body");
+                setTimeout(() => {
+                    $(".mssc").remove();
+                    this.user.val("");
+                    this.pass1.val("");
+                    this.pass2.val("");
+                }, 3000);
+            }
+        }
+    }
+
+    new Login();
+</script>
 </html>

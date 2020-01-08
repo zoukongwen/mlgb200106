@@ -39,14 +39,7 @@ blockquote:before, blockquote:after, q:before, q:after {
     content:'';
     content: none;
 }
-#top{
-    height: 90px;width: 100%;
-    a{
-        display: block;width: 100%;
-        height: 90px;
-        background: url(../images/top1.jpg) no-repeat center;
-    }
-}
+
 .margin{
     width: 1200px;margin: 0 auto;
 }
@@ -236,6 +229,7 @@ blockquote:before, blockquote:after, q:before, q:after {
             }
         }
         #goods_nav{
+            display: none;
             position: absolute;
             background: #000;
             border: 0px;
@@ -327,6 +321,12 @@ blockquote:before, blockquote:after, q:before, q:after {
                 }
             }
         }
+
+    }
+    .cat_all:hover{
+        #goods_nav{
+            display: block;
+        }
     }
     .daoh{
         float: left;
@@ -356,233 +356,97 @@ blockquote:before, blockquote:after, q:before, q:after {
     }
     
 }
-#banner_1{
-    overflow: hidden;
-    .banner_1_l{
-        float:right;
-        img{
+
+#ss{
+    .ss_t{
+        .lc_title{
+            text-align: center;
+            width: 1200px;
+            height: 50px;
             display: block;
-        }
-    }
-}
-#sale_part{
-    margin: 20px 0;
-    ul{
-        width: 110%;
-        overflow: hidden;
-        li{
-            float: left;
-            margin-right:8px;
-        }
-    }
-}
-.loft{
-    overflow: hidden;
-    .loft_t{
-        overflow: hidden;
-    }
-    .loft_t_l{
-        float: left;
-        text-align: center;
-        span{
-            display:block;
-            float: left;
-        }
-        span:nth-child(1){
-            
-            width: 50px;
-            height: 46px;
-            background: url(../images/header_icon.png) no-repeat center;
-        }
-        span:nth-child(2){
-            font: 20px/42px "";
-            margin-left:5px;
-            color: #444;
-            
-        }
-        span:nth-child(3){
-            color: #999;
-            font: 14px/42px "";
-            margin-left: 15px;
-        }
-        a{
-            display: block;
-            float: left;
-            color: #666;
-            font: 12px/42px "";
-            margin-left: 20px;
-            i{
-                background: url()
+            margin: 0 auto;
+            margin-top: 20px;
+            border-top: 2px solid #1EAA39;
+            border-right: 1px solid #eeeeee;
+            border-left: 1px solid #eeeeee;
+            border-bottom: 1px solid #eeeeee;
+            background-color: #FAFAFC;
+            .lc_title_lf{
+
+                height: 47px;
+                float: left;
+                cursor: pointer;
+                span{
+                    float: left;
+                }
+                a{
+                    font: 12px/47px "";
+                    color: #666;
+                    display: block;
+                    width: 97px;
+                }
+            }
+            .lc_title_rt{
+                width: 310px;
+                height: 47px;
+                float: right;
+                p{
+                    float: right;
+                    width: 160px;
+                    height: 47px;
+                    line-height: 47px;
+                    overflow: hidden;
+                    font-family: Verdana, Simsun;
+                    font-size: 12px;
+                    color: #666666;
+                }
             }
         }
     }
-    .loft_t_r{
-        float: right;
-        width: 244px;
-        height: 42px;
-        border: 1px #eee solid;
-        border-bottom:none; 
-        position: relative;
-        span{
-            font: 16px/42px "";
-            font-weight: normal;
-            color: #157929;
-            padding-left: 10px;
-        }
-        a{
-            font:12px/42px "";
-            color: #666;
-            position: absolute;
-            top:0;
-            right: 10px;
-        }
-    }
-    .loft_b{
-        border: #1a9733 1px solid;
-        .loft_b_l{
-        float: left;
-        width: 955px;
-        height: 243px;
-        border: 1px #eee solid; 
+    .ss_b{
         overflow: hidden;
-        }
-        .loft_b_r{
-            float: right;
-            ul{
-                .last{
-                    height: 118px; 
-                }
-                li{
-                    width: 204px;
-                    height: 27px;
-                    font: 12px/27px "";
-                    a{
-                        color: #666;
+        ul{
+            li{
+                width: 220px;
+                height: 360px;
+                float: left;
+                border: 1px solid #eeeeee;
+                margin:0 10px 20px 8px;
+                a{
+                    img{
+                        width: 218px;
+                        height: 220px;
+                        display: block;
                     }
                     p{
+                        // width: 100%;
+                        height: 32px;
                         overflow: hidden;
+                        margin-bottom: 15px;
+                        text-overflow: ellipsis;
+                        font: 12px/16px "";
+                        color: #333333;
                     }
-                    h3{
-                        overflow: hidden;
+                    .ss_b_p{
+                        margin:20px 0 10px 20px;
+                        font-family: Verdana, Simsun;
+                        font-size: 16px;
+                        color: #E4462C;
                     }
+                }
+                input{
+                    width: 100px;
+                    font: 16px/30px "";
+                    background: #199733;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    margin-left:50px;
                 }
             }
         }
     }
-    
 }
-.flot_tab{
-    ul{
-        li{
-            a{
-                p{
-                    
-                }
-            }
-        }
-    }
-}
-#tc{
-    .green_border{
-        width: 100%;
-        height: 42px;
-        display: block;
-        border-bottom: 1px solid #1eaa39;
-        .loft_left{
-            height: 43px;
-            width: 400px;
-            line-height: 43px;
-            // display: inline-block;
-            float: left;
-            .floor_f1{
-                width: 36px;
-                height: 24px;
-                background: url(../images/loft_01.jpg) no-repeat;
-                float: left;
-                margin-top: 12px;
-                line-height: 24px;
-                color: #FFF;
-                font-size: 16px;
-                padding-left: 2px;
-            }
-            .floor_text{
-                font-size: 20px;
-                margin-left: 55px;
-                color: #444;
-                float: left;
-                text-align: center;
-            }
-            .floor_explain{
-                float: left;
-                color: #999;
-                font-size: 14px;
-                margin-left: 20px;
-            }
-            a{
-                width: 90px;
-                color: #666;
-                font-size: 12px;
-                float: left;
-                margin-left: 25px;
-            }
-        }
-        .loft_right{
-            height: 43px;
-            line-height: 43px;
-            float: right;
-            .head{
-                position: relative;
-                li{
-                    float: left;
-                    width: 82px;
-                    height: 32px;
-                    line-height: 42px;
-                    color: #646464;
-                    cursor: default;
-                    word-break: break-all;
-                    word-wrap: break-word;
-                    position: relative;
-                    a{
-                        text-align: center;
-                        color: #666;
-                        font:12px/42px "";
-                        width: 100%;
-                        border: 1px solid #666;
-                        border-bottom:none;
-
-                        position: absolute;
-                        z-index: 10;
-                        right: 0;
-                        background: #fff;
-                        height: 42px;
-                        // height: 32px;
-                        top: -1px;
-                        span{
-                            display: block;
-                        }
-                    }
-                    .current{
-                        border-left: 1px solid #1eaa39;
-                        border-right: 1px solid #1eaa39;
-                        border-top: 2px solid #1eaa39;
-                    }
-                    a:hover{
-                        border-left: 1px solid #1eaa39;
-                        border-right: 1px solid #1eaa39;
-                        border-top: 2px solid #1eaa39;
-                    }
-                }
-            }
-        }
-
-    }
-}
-
-
-
-
-
-
 
 
 
@@ -712,4 +576,6 @@ blockquote:before, blockquote:after, q:before, q:after {
         }
     }
 }
+
+
 

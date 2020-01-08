@@ -369,12 +369,14 @@ blockquote:before, blockquote:after, q:before, q:after {
         .xq_l_t{
             position: relative;
             .s_box{
+                width: 350px;
+                height: 350px;
                 img{
                     display: block;
                     width: 350px;
                     height: 350px;
                 }
-                span{background: rgba(200,200,200,0.5);position: absolute;left:0;top:0;display: none;}
+                span{background: rgba(200,200,200,0.5);position: absolute;left:0;top:0;}
 
             }
             .b_box{

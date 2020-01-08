@@ -13,8 +13,8 @@
         <div class="margin">
             <ul class="top_l">
                 <li><a href="##">欢迎光临美鲜冻品商城</a></li>
-                <li><a href="##">登录</a><span>|</span></li>
-                <li><a href="##">注册</a></li>
+                <li><a href="./signIn.html">登录</a><span>|</span></li>
+                <li><a href="./register.html">注册</a></li>
             </ul>
             <div class="top_r">
                 <ul class="t_r_u">
@@ -28,7 +28,7 @@
                             <li><a href="user.php?act=account_log" rel="nofollow">资金管理</a></li>
                         </ul>
                     </li>
-                    <li><a href="##"><i></i>我的购物车<i></i><b></b></a></li>
+                    <li><a href="./shoppingCart.html"><i></i>我的购物车<i></i><b></b></a></li>
                     <li><a href="##">积分商城</a></li>
                     <li><a href="##"><i></i>手机逛鲜美</a>
                         <ul class="sj">
@@ -709,7 +709,7 @@
                     </div>
                 </div>
                 <ul class="daoh">
-                    <li><a href="/" class="curr">首页</a><span>/</span></li>
+                    <li><a href="./homePage.html" class="curr">首页</a><span>/</span></li>
                     <li class="add_style"><a href="new_goods.php?act=new_goods_nlist">新品上架</a><span>/</span>
                         <!-- <div class="icon_position_nav"> <i id="icon_hot1"></i><i id="icon_hot3" style="display: none"></i></div> -->
                     </li>
@@ -731,19 +731,20 @@
                         <img src="../images/xq_1.jpg" alt="">
                         <span></span>
                     </div>
-                    <div class="b_box">
+                    <div class="b_box" style="display:none">
                         <img src="../images/xq_1.jpg" alt="">
                     </div>
                     
                 </div>
-                <div class="xq_l_b">
+                <!-- <div class="xq_l_b">
                     <div id="showsum" style="overflow: hidden; height: 62px; width: 325px; position: relative;">
                         <p style="position: absolute; left: 0px; top: 0px; width: 130px;"><span class="sel" style="float: left; margin-left: 3px; width: 60px; height: 60px; overflow: hidden; position: relative;"><img src="../images/xq_1.jpg" width="60" height="60" style="max-width: 100%; max-height: 100%; position: relative;"></span><span style="float: left; margin-left: 3px; width: 60px; height: 60px; overflow: hidden; position: relative;"><img src="../images/xq_1.jpg" width="60" height="60" style="max-width: 100%; max-height: 100%; position: relative;"></span></p>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="xq_r">
-                    <h2 oenglish="RUIMAIJIA Coating Powder extra special level 20kg/bag" ochinese="瑞麦加 裹粉 特级 20kg/袋" id="detail_goods_name">瑞麦加 裹粉 特级 20kg/袋</h2>
+                <div class="xq_r_xr">
+                    <!-- <h2 oenglish="RUIMAIJIA Coating Powder extra special level 20kg/bag" ochinese="瑞麦加 裹粉 特级 20kg/袋" id="detail_goods_name">瑞麦加 裹粉 特级 20kg/袋</h2>
                     <p class="sub_text">瑞麦加裹粉以小麦粉为主要原料，添加辅料食用玉米淀粉、马铃薯淀粉、食盐、谷氨酸钠等，适用于海鲜，肉类，蔬菜等产品外层调味包裹的裹粉，使用后可将食材表面呈无数鳞片状，美味可口。</p>
                     <form action="##">
                         <div class="form_1">
@@ -770,7 +771,9 @@
                             购买数量<span class="jian">-</span><input type="text" name="" id="sl" value="1"><span class="jia">+</span>
                         </div>
                         <input type="button" name="" id="btn_1" value="加入购物车">
-                    </form>
+                    </form> -->
+
+                </div>
             </div>
         </div>
     </div>
@@ -894,52 +897,186 @@
 </body>
 <script src="../js/jquery-1.11.3.js"></script>
 <script>
-    function Magnifier(){
-            this.xobx = document.querySelector(".s_box");
-            this.span = document.querySelector(".s_box span");
-            this.dobx = document.querySelector(".b_box");
-            this.img = document.querySelector(".b_box img");
+    class Magnifier{
+        constructor(){
+            this.xq_l_t = $(".xq_l").find(".xq_l_t");
+            this.url = "../json/csearch.json";
+            this.cde();
+            
+            this.xq_r_xr = $(".xq_r").find(".xq_r_xr");
+
+            //这里绑定事件
+        }
+    
+
+    //这里定义绑定的事件
+    addEvent(){
+        //事件函数内部取不到实例的this，这里将this声明为that
+
+        var that = this;
+        this.btn1.on("click",function(){
+            that.txt.val(that.txt.val() - 1)
+            if(that.txt.val()<=0){
+                that.txt.val(1);
+            }
+        });
+        this.btn2.on("click",function(){
+            that.txt.val(parseInt(that.txt.val()) + 1)
+        });
+        this.btn3.on("click",function(){
+            localStorage.setItem("cart",that.txt.val());
+        })
+
+
+
+
+        //这里绑定鼠标进入事件
+        this.xobx.on("mouseover",function(){
+            //这里绑定进入事件的执行事件
+            that.show();
+        });
+        //这里绑定鼠标离开
+        this.xobx.on("mouseout",function(){
+            that.hide();
+        });
+        //这里绑定鼠标移动
+        this.xobx.on("mousemove",function(e){
+
+            // var e = this;
+            // console.log(e)
+            that.move(e);
+        });
+        
+    }
+    cde(){
+        var that = this;
+            $.ajax({
+                url:that.url,
+                success:function(res){
+                    that.res = res;
+                    that.display();
+                console.log(that.res);
+                }
+            })
+    }
+    display(){
+        var str1 = "";
+        var str2 = "";
+        var id = localStorage.getItem("id");
+        console.log(id);
+            for(var i = 0;i < this.res.length;i++){
+                if(this.res[i].id == id){
+                    console.log(this.res[i].id)
+                    str1 += `<div class="s_box">
+                                <img src="${this.res[i].img_xq}" alt="">
+                                <span></span>
+                            </div>
+                            <div class="b_box" style="display:none">
+                                <img src="${this.res[i].img_xq}" alt="">
+                            </div>`;
+                    str2 += `<h2 oenglish="RUIMAIJIA Coating Powder extra special level 20kg/bag"           ochinese="瑞麦加 裹粉 特级 20kg/袋" id="detail_goods_name">${this.res[i].brief}</h2>
+                            <p class="sub_text">${this.res[i].brief}</p>
+                            <form action="##">
+                            <div class="form_1">
+                            <span>美鲜价</span>
+                            <span class="jg">${this.res[i].Price}</span>
+                            </div>
+                            <table class="goods_info">
+                            <tbody>
+                                <tr>
+                                    <td class="title">商品规格：</td>
+                                    <td class="text seller_note">${this.res[i].Spec}</td>
+                                </tr>
+                                <tr>
+                                    <td class="title">购买赠送:</td>
+                                    <td class="text"><span id="jifen">${this.res[i].integral}</span>&nbsp;积分<strong style="font-size: 12px;display: none;">0</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="title">商品货号:</td>
+                                    <td class="text goods_sn">${this.res[i].id}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="form_2">
+                            购买数量<span class="jian">-</span><input type="text" name="" id="sl" value="1"><span class="jia">+</span>
+                        </div>
+                        <input type="button" name="" id="btn_1" value="加入购物车">
+                    </form>`
+                }
+
+            }
+            console.log(str1)
+            this.xq_l_t.html(str1);
+            this.xq_r_xr.html(str2);
+            this.xobx = $(".xq_l_t").find(".s_box");
+            this.xobx = $(".xq_l_t").find(".s_box");
+            this.span = $(".xq_l_t").find(".s_box span");
+            this.dobx = $(".xq_l_t").find(".b_box");
+            this.img = $(".xq_l_t").find(".b_box img");
+            this.btn1 = $(".form_2").find(".jian");
+            this.btn2 = $(".form_2").find(".jia");
+            this.txt = $(".form_2").find("#sl");
+            this.btn3 = $(".xq_r").find("#btn_1");
             this.addEvent();
+
+
+    }
+    //这里定义鼠标进入
+    show(){
+        //这里显示span并给其设置宽高，
+        //其中宽高根据比例设置
+        // console.log(parseInt(this.xobx.css("width"))*parseInt(this.dobx.css("width"))/parseInt(this.img.css("width")))
+        // console.log(parseInt(this.xobx.css("width")))
+        // console.log(this.dobx.css("width"))
+        // console.log(this.img.css("width"))
+        // console.log()
+        this.span.css({
+            width:parseInt(this.xobx.css("width"))*parseInt(this.dobx.css("width"))/parseInt(this.img.css("width")),
+            height:parseInt(this.xobx.css("height"))*parseInt(this.dobx.css("height"))/parseInt(this.img.css("height")),
+            display:"block",
+            background:"rgba(200,200,200,0.5)"
+        });
+        // this.span.css({
+        //     display:"block",
+        //     background:"rgba(200,200,200,0.5)"
+        // });
+        this.dobx.css({
+            display:"block"
+        });
+    }
+    hide(){
+        this.span.css({
+            display:"none"
+        });
+        this.dobx.css({
+            display:"none"
+        });
+    }
+    move(e){
+        // console.log(e.clientX)
+        // console.log(e.clientY)
+        // console.log(this.xq_l_t.offset().left)
+        var l = parseInt(e.clientX - this.xq_l_t.position().left -parseInt(this.span.css("width"))/2);
+        var t = parseInt(e.clientY - 40 - parseInt(this.span.css("height"))/2);
+        // console.log(l,t)
+
+        if(l<0) l=0;
+        if(t<0) t=0;
+        if(l>(parseInt(this.xobx.css("width"))-parseInt(this.span.css("width")))){
+            l=parseInt(parseInt(this.xobx.css("width"))-parseInt(this.span.css("width")))
         }
-        Magnifier.prototype.addEvent = function(){
-            var that = this;
-            this.xobx.onmouseover = function(){
-                that.show();
-            }
-            this.xobx.onmouseout = function(){
-                that.hide();
-            }
-            this.xobx.onmousemove = function(eve){
-                var e = eve || window.event;
-                that.move(e);
-            }
+        if(t>(parseInt(this.xobx.css("height"))-parseInt(this.span.css("height")))){
+            t=parseInt(parseInt(this.xobx.css("height"))-parseInt(this.span.css("height")))
         }
-        Magnifier.prototype.show = function (){
-            this.span.style.width = this.xobx.offsetWidth*this.dobx.offsetWidth/this.img.offsetWidth + "px";
-            this.span.style.height = this.xobx.offsetHeight*this.dobx.offsetHeight/this.img.offsetHeight + "px";
-            this.span.style.display = "block";
-            this.dobx.style.display = "block";
-        }
-        Magnifier.prototype.hide = function (){
-            this.span.style.display = "none";
-            this.dobx.style.display = "none";
-        }
-        Magnifier.prototype.move = function (e){
-            var l = parseInt(e.clientX - this.xobx.offsetLeft -this.span.offsetWidth/2);
-            var t = parseInt(e.clientY - this.xobx.offsetTop -this.span.offsetHeight/2);
-            if(l<0) l=0;
-            if(t<0) t=0;
-            if(l>(this.xobx.offsetWidth-this.span.offsetWidth)){
-                l=parseInt(this.xobx.offsetWidth-this.span.offsetWidth)
-            }
-            if(t>(this.xobx.offsetHeight-this.span.offsetHeight)){
-                t=parseInt(this.xobx.offsetHeight-this.span.offsetHeight)
-            }
-            this.span.style.left = l + "px";
-            this.span.style.top = t + "px";
-            this.img.style.left = parseInt(l/(this.span.offsetWidth-this.xobx.offsetWidth)*(this.img.offsetWidth-this.dobx.offsetWidth)) + "px";
-            this.img.style.top = parseInt(t/(this.span.offsetHeight-this.xobx.offsetHeight)*(this.img.offsetHeight-this.dobx.offsetHeight)) + "px";
-        }
+        this.span.css({left:l});
+        this.span.css({top:t});
+        this.img.css({
+            left:parseInt(l/(parseInt(this.span.css("width"))-parseInt(this.xobx.css("width")))*(parseInt(this.img.css("width"))-parseInt(this.dobx.css("width")))),
+            top:parseInt(t/(parseInt(this.span.css("height"))-parseInt(this.xobx.css("height")))*(parseInt(this.img.css("height"))-parseInt(this.dobx.css("height"))))
+        })
+        // console.log(l,t)
+    }
+}
     new Magnifier();
 </script>
 </html>
