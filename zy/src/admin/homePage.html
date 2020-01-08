@@ -948,16 +948,12 @@
             </div>
         </div>
     </div>
-    <div id="mune">
+    <div id="nume">
         <ul>
-            <li id="part1"><a rel="#loft1" href="javascript:void(0)" class=""></a></li>
-            <li id="part2"><a rel="#loft2" href="javascript:void(0)" class=""></a></li>
-            <li id="part3"><a rel="#loft3" href="javascript:void(0)" class=""></a></li>
-            <li id="part4"><a rel="#loft4" href="javascript:void(0)" class=""></a></li>
-            <li id="part5"><a rel="#loft5" href="javascript:void(0)" class=""></a></li>
-            <li id="part6"><a rel="#loft6" href="javascript:void(0)" class=""></a></li>
-            <li id="part7"><a rel="#loft7" href="javascript:void(0)" class=""></a></li>
-            <li id="part8"><a rel="#loft8" href="javascript:void(0)" class="current"></a></li>
+            <li id="part1"><a rel="#loft1" href="javascript:void(0)" class="">1</a></li>
+            <li id="part2"><a rel="#loft2" href="javascript:void(0)" class="">2</a></li>
+            <li id="part2"><a rel="#loft2" href="javascript:void(0)" class="">3</a></li>
+            <li id="part2"><a rel="#loft2" href="javascript:void(0)" class="">4</a></li>
         </ul>
     </div>
 </body>
@@ -977,22 +973,22 @@
         }
         addEvent(){
             var that = this;
-            // this.ss_ul.on("click","a",function(){
-            //     var a = this;
-            //     console.log(this);
-            //     // that.cxq(a);
-            // })
+            this.ss_ul.on("click","a",function(){
+                var a = this;
+                console.log(this);
+                that.cxq(a);
+            })
             // this.btn.on("click",function(){
                 that.cSe();
             // })
         }
-        // cxq(a){
-        //     console.log(a)
-        //     console.log(this.res)
-        //     localStorage.setItem("id",a.getAttribute("ico"));
-        //     location.href ="cDetails.html";
-        //     console.log(a.getAttribute("ico"))
-        // }
+        cxq(a){
+            // console.log(a)
+            // console.log(this.res)
+            localStorage.setItem("id",a.getAttribute("ico"));
+            location.href ="cDetails.html";
+            // console.log(a.getAttribute("ico"))
+        }
         cSe(){
             var that = this;
             $.ajax({

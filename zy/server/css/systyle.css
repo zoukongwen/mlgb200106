@@ -386,6 +386,34 @@ blockquote:before, blockquote:after, q:before, q:after {
         .loft .loft_b .loft_b_r ul li h3 {
           overflow: hidden; }
 
+.flot_tab ul {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #EEEEEE; }
+  .flot_tab ul li {
+    width: 218px;
+    border: 1px solid #EEEEEE;
+    float: left;
+    margin: 9px;
+    padding: 0;
+    position: relative; }
+    .flot_tab ul li a {
+      text-align: center;
+      color: #199733; }
+      .flot_tab ul li a img {
+        display: block;
+        width: 140px;
+        height: 140;
+        margin: 30px; }
+      .flot_tab ul li a p {
+        font: 12px/44px "";
+        height: 44px;
+        color: #199733; }
+      .flot_tab ul li a .ss_b_p {
+        font: 18px/44px "Verdana, simsun";
+        color: #E4462C; }
+
 #tc .green_border {
   width: 100%;
   height: 42px;
@@ -564,3 +592,21 @@ blockquote:before, blockquote:after, q:before, q:after {
       .floot .floot_5 ul li {
         float: left;
         margin-right: 5px; }
+
+#nume {
+  position: fixed;
+  left: 50px;
+  top: 100px; }
+  #nume ul {
+    background: #999;
+    border: #333 solid 1px; }
+    #nume ul li a {
+      display: block;
+      font: 14px/50px "";
+      color: #333;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      background: #999; }
+    #nume ul li a:hover {
+      background: #157929; }

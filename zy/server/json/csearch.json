@@ -1,10 +1,10 @@
 [
     {"img":"../images/ss_1.jpg","img_xq":"../images/sp_1.jpg","Price":"￥123.00元","brief":"都是好吃的，这是1号","Keyword":"披萨","id":"1","Spec":"20kg/袋","integral":"3"},
-    {"img":"../images/ss_2.jpg","img_xq":"../images/sp_1.jpg","Price":"￥234.00元","brief":"都是好吃的，这是2号","Keyword":"披萨","id":"2","Spec":"260kg/袋","integral":"6"},
-    {"img":"../images/ss_3.jpg","img_xq":"../images/sp_1.jpg","Price":"￥345.00元","brief":"都是好吃的，这是3号","Keyword":"披萨,面粉","id":"3","Spec":"200kg/袋","integral":"7"},
-    {"img":"../images/ss_4.jpg","img_xq":"../images/sp_1.jpg","Price":"￥456.00元","brief":"都是好吃的，这是4号","Keyword":"披萨,面粉","id":"4","Spec":"420kg/袋","integral":"3"},
-    {"img":"../images/ss_5.jpg","img_xq":"../images/sp_1.jpg","Price":"￥567.00元","brief":"都是好吃的，这是5号","Keyword":"披萨,面粉","id":"5","Spec":"320kg/袋","integral":"4"},
-    {"img":"../images/ss_6.jpg","img_xq":"../images/sp_1.jpg","Price":"￥678.00元","brief":"都是好吃的，这是6号","Keyword":"披萨,面粉","id":"6","Spec":"220kg/袋","integral":"2"},
-    {"img":"../images/ss_7.jpg","img_xq":"../images/sp_1.jpg","Price":"￥789.00元","brief":"都是好吃的，这是7号","Keyword":"披萨,面粉","id":"7","Spec":"120kg/袋","integral":"1"},
-    {"img":"../images/ss_8.jpg","img_xq":"../images/sp_1.jpg","Price":"￥8910.00元","brief":"都是好吃的，这是8号","Keyword":"披萨,面粉","id":"8","Spec":"12kg/袋","integral":"0"}
+    {"img":"../images/ss_2.jpg","img_xq":"../images/sp_2.jpg","Price":"￥234.00元","brief":"都是好吃的，这是2号","Keyword":"披萨","id":"2","Spec":"260kg/袋","integral":"6"},
+    {"img":"../images/ss_3.jpg","img_xq":"../images/sp_3.jpg","Price":"￥345.00元","brief":"都是好吃的，这是3号","Keyword":"披萨,面粉","id":"3","Spec":"200kg/袋","integral":"7"},
+    {"img":"../images/ss_4.jpg","img_xq":"../images/sp_4.jpg","Price":"￥456.00元","brief":"都是好吃的，这是4号","Keyword":"披萨,面粉","id":"4","Spec":"420kg/袋","integral":"3"},
+    {"img":"../images/ss_5.jpg","img_xq":"../images/sp_5.jpg","Price":"￥567.00元","brief":"都是好吃的，这是5号","Keyword":"披萨,面粉","id":"5","Spec":"320kg/袋","integral":"4"},
+    {"img":"../images/ss_6.jpg","img_xq":"../images/sp_6.jpg","Price":"￥678.00元","brief":"都是好吃的，这是6号","Keyword":"披萨,面粉","id":"6","Spec":"220kg/袋","integral":"2"},
+    {"img":"../images/ss_7.jpg","img_xq":"../images/sp_7.jpg","Price":"￥789.00元","brief":"都是好吃的，这是7号","Keyword":"披萨,面粉","id":"7","Spec":"120kg/袋","integral":"1"},
+    {"img":"../images/ss_8.jpg","img_xq":"../images/sp_8.jpg","Price":"￥8910.00元","brief":"都是好吃的，这是8号","Keyword":"披萨,面粉","id":"8","Spec":"12kg/袋","integral":"0"}
 ]

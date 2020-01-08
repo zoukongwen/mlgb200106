@@ -19,7 +19,7 @@
             <div class="cart_t">
                 <h4>全部商品</h4>
                 <table class="table_title">
-                    <tbody>
+                    <thead>
                         <tr>
                             <td width="220"><input type="checkbox" class="icon_select all_choice" name="items" checked="">全选</td>
                             <td width="320">商品</td>
@@ -29,6 +29,9 @@
                             <td width="120">金额（元）</td>
                             <td width="90" class="td_control_part">操作</td>
                         </tr>
+                    </thead>
+                    <tbody>
+
                     </tbody>
                 </table>
             </div>
@@ -173,4 +176,173 @@
         </div>
     </div>
 </body>
+<script src="../js/jquery-1.11.3.js"></script>
+<script>
+    class good{
+        constructor(){
+            this.tbody = $("#cart").find("tbody");
+            console.log(this.tbody)
+            this.url = "../json/csearch.json";
+            // this.zj = document.querySelector(".zj");
+            this.jj = 0;
+            this.fxkoff = 0;
+            this.arr = [];
+            this.init();
+        }
+        init(){
+            var that = this;
+            $.ajax({
+                url:that.url,
+                success:function(res){
+                    that.res = res;
+                    that.display();
+                console.log(that.res);
+                }
+            })
+        }
+        // addEvent(){
+        //     var that = this;
+        //     for(var i = 0;i<this.pp.length;i++){
+        //         this.arr.push("checked");
+        //     }
+        //     console.log(this.arr[3])
+        //     this.tbody.oninput = function (eve){
+        //         that.target = eve.target;
+        //         if(that.target.className === "num"){
+        //             if(that.target.value < 1){
+        //                 that.target.value = 1
+        //             }
+        //             that.jj = 3;
+        //             that.jjdis();
+        //         }
+        //     }
+
+        //     this.tbody.onclick = function (eve){
+        //         that.target = eve.target;
+        //         if(that.target.id === "btnL"){
+        //             that.jj = 1;
+        //         that.jjdis();
+
+        //         }
+        //         if(that.target.id === "btnR"){
+        //             that.jj = 0;
+        //         that.jjdis();
+
+        //         }
+        //         if(that.target.id === "btn"){
+        //             that.jj = 2;
+        //         that.jjdis();
+
+        //         }
+        //         if(that.target.className === "fxk"){
+        //             that.jj = 4;
+                   
+        //             that.fxksj();
+        //         }
+        //     }
+        //     console.log(this.pp)
+        // }
+        // fxksj(){
+        //     if(this.jj == 4){
+        //         var jzarr = 0;
+        //         for(var i = 0 ;i<this.fxk.length;i++){
+        //             // console.log(this.fxk[i].checked)
+        //             if(this.fxk[i].checked){
+        //                jzarr += this.fxk[i].parentNode.parentNode.children[5].innerHTML * 1;
+        //                 this.fxkoff = 1;
+        //             }
+        //         }
+                
+        //         this.zj.innerHTML = jzarr.toFixed(2);
+        //         console.log(jzarr)
+        //         console.log(this.fxkoff)
+        //     }
+        // }
+        // jjdis(){
+        //     if(this.jj == 1){
+        //         if(this.target.parentNode.children[1].value == 1){
+        //             this.target.parentNode.children[1].value = 1;
+        //         }else{
+        //             this.target.parentNode.children[1].value = this.target.parentNode.children[1].value - 1;
+        //         }
+        //         this.num1 = this.target.parentNode.children[1].value;
+
+        //     }
+        //     if(this.jj == 0){
+        //         this.target.parentNode.children[1].value = parseInt(this.target.parentNode.children[1].value) + 1;
+        //         this.num1 = this.target.parentNode.children[1].value;
+        //     }
+        //     if(this.jj == 2){
+        //         for(var i = 0 ;i<this.pp.length;i++){
+        //             if(this.target.parentNode.parentNode.getAttribute("index") == this.pp[i].goodId){
+        //                 this.pp.splice(i,1);
+        //                 break;
+        //             }
+        //         }
+        //         this.target.parentNode.parentNode.remove();
+        //     }
+        //     if(this.jj == 3){
+        //         this.num1 = this.target.value;
+        //     }
+        //     for(var i = 0 ;i<this.pp.length;i++){
+        //         if(this.target.parentNode.parentNode.getAttribute("index") == this.pp[i].goodId){
+        //             this.pp[i].num = this.num1;
+        //             break;
+        //         }
+        //     }
+        //     localStorage.setItem("goodid",JSON.stringify(this.pp))
+        //     this.display();
+        // }
+        display(){
+            var that = this;
+            // console.log(this.res)
+            this.pp = JSON.parse(localStorage.getItem("goodid"));
+            var str = "";
+            var j = 0;
+            // console.log(typeof JSON.parse(localStorage.getItem("goodid")))
+            // console.log(JSON.parse(localStorage.getItem("goodid")))
+            // console.log(this.pp)
+
+            for(var i = 0 ;i<this.res.length;i++){
+                var offon = that.pp.some((val,idx)=>{
+                    j=idx;
+                    return val.goodId ==this.res[i].id;
+                })
+                // console.log(offon)
+                // console.log(j)
+                // console.log(i)
+                if(offon){
+                    // console.log(this.arr)
+                    // console.log(j)
+                    // console.log(this.arr[3])
+                    str +=`<tr id="tr" index="${this.res[i].goodId}">
+                            <td width="220"><input type="checkbox" class="fxk" name="items" checked="">选择</td>
+                            <td width="320"><img src="${this.res[i].img}" alt=""></td>
+                            <td width="120">${this.res[i].Spec}</td>
+                            <td width="150">${this.res[i].Price}</td>
+                            <td width="150"><input type="button" id="btnL" value="-"><input type="text" name="" class="num" value="${that.pp[j].num}"><input type="button" id="btnR" value="+"></td>
+                            <td width="120">${(that.pp[j].num*this.res[i].Price.slice(1,this.res[i].Price.length-1)).toFixed(2)}</td>
+                            <td width="90" class="td_control_part"><input type="button" id="btn" value="删除"></td>
+                        </tr>`
+                    // str += `<tr id="tr" index="${this.res[i].goodId}">
+                    //             <th><input type="checkbox" class="fxk"></th>
+                    //             <th><img src="${this.res[i].img}" alt=""></th>
+                    //             <th><p>${this.res[i].name}</p></th>
+                    //             <th>${this.res[i].price}</th>
+                    //             <th>数量:<input type="button" id="btnL" value="-"><input type="text" name="" class="num" value="${that.pp[j].num}"><input type="button" id="btnR" value="+"></th>
+                    //             <th>${(that.pp[j].num*this.res[i].price).toFixed(2)}</th>
+                    //             <th><input type="button" id="btn" value="删除"></th>
+                    //         </tr>`
+                }
+                
+            }
+            // console.log(this.arr);
+            // console.log(str);
+            this.tbody.html(str); 
+            // this.fxk = document.querySelectorAll(".fxk");
+
+        }
+    }
+    new good()
+</script>
 </html>

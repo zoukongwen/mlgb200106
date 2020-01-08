@@ -53,6 +53,19 @@ blockquote:before, blockquote:after, q:before, q:after {
   #cart h4 {
     font: 20px/40px "SimHei, 黑体";
     color: #1a9733; }
+  #cart thead {
+    width: 1200px;
+    display: block;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #eeeeee;
+    border-bottom: 2px solid #1A9733; }
+    #cart thead td {
+      font-family: simsun;
+      font-size: 12px;
+      color: #666666;
+      text-align: left;
+      line-height: 40px; }
   #cart tbody {
     width: 1200px;
     display: block;
@@ -60,12 +73,17 @@ blockquote:before, blockquote:after, q:before, q:after {
     background-color: #fff;
     border: 1px solid #eeeeee;
     border-bottom: 2px solid #1A9733; }
-    #cart tbody td {
+    #cart tbody tr td {
       font-family: simsun;
       font-size: 12px;
       color: #666666;
       text-align: left;
       line-height: 40px; }
+      #cart tbody tr td img {
+        width: 80px; }
+      #cart tbody tr td .num {
+        width: 30px;
+        text-align: center; }
 
 .cart_b {
   border-top: 1px solid #eeeeee;

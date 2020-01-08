@@ -924,7 +924,8 @@
             that.txt.val(parseInt(that.txt.val()) + 1)
         });
         this.btn3.on("click",function(){
-            localStorage.setItem("cart",that.txt.val());
+            var btn = this;
+            that.btn_3(btn);
         })
 
 
@@ -948,6 +949,58 @@
         });
         
     }
+    btn_3(btn){
+        var that = this;
+        var msg = localStorage.getItem("userMsg") ? JSON.parse(localStorage.getItem("userMsg")) : [{user:"",pass:"",onoff:0}];
+        var i=0;
+        var on = msg.some((val,index)=>{
+            i = index;
+            return val.onoff != 0;
+        });
+        if(on){
+        // 登录成功
+        console.log(btn)
+            this.pp = localStorage.getItem("goodid") ? JSON.parse(localStorage.getItem("goodid")):[];
+                if(this.pp.length == 0){
+                    this.pp = [{goodId:btn.getAttribute("index"),num:this.txt.val()}];
+                }else{
+                    var j = 0;
+                    var offon = this.pp.some((val,idx)=>{
+                        j = idx
+                        return val.goodId == btn.getAttribute("index")
+                    })
+                    console.log(j);
+                    if(offon){
+                        this.pp[j].num = parseInt(this.pp[j].num) + parseInt(this.txt.val());
+                    }else{
+                        this.pp.push({goodId:btn.getAttribute("index"),num:this.txt.val()});
+                    }
+                }
+                localStorage.setItem("goodid",JSON.stringify(this.pp));
+           
+        }else{
+            // 没有登录
+            $("<div class='mssc'>你还没有登录，去<a href='./signln.html'>登录</a>吧</div>").css({
+                    width:400,
+                    height:400,
+                    background:"#fff",
+                    border:"1px solid #0f0",
+                    fontSize:"16px",
+                    lineHeight:"400px",
+                    textAlign:"center",
+                    position:"absolute",
+                    left:0,
+                    right:0,
+                    top:0,
+                    bottom:0,
+                    margin:"auto"
+                }).appendTo("body");
+                setTimeout(() => {
+                    $(".mssc").remove();
+                }, 3000);
+        }
+
+    }
     cde(){
         var that = this;
             $.ajax({
@@ -967,6 +1020,7 @@
             for(var i = 0;i < this.res.length;i++){
                 if(this.res[i].id == id){
                     console.log(this.res[i].id)
+                    console.log(this.res[i])
                     str1 += `<div class="s_box">
                                 <img src="${this.res[i].img_xq}" alt="">
                                 <span></span>
@@ -1000,7 +1054,7 @@
                         <div class="form_2">
                             购买数量<span class="jian">-</span><input type="text" name="" id="sl" value="1"><span class="jia">+</span>
                         </div>
-                        <input type="button" name="" id="btn_1" value="加入购物车">
+                        <input type="button" name="" id="btn_1" value="加入购物车"  index="${this.res[i].id}">
                     </form>`
                 }
 
@@ -1018,6 +1072,7 @@
             this.txt = $(".form_2").find("#sl");
             this.btn3 = $(".xq_r").find("#btn_1");
             this.addEvent();
+
 
 
     }
@@ -1057,7 +1112,7 @@
         // console.log(e.clientY)
         // console.log(this.xq_l_t.offset().left)
         var l = parseInt(e.clientX - this.xq_l_t.position().left -parseInt(this.span.css("width"))/2);
-        var t = parseInt(e.clientY - 40 - parseInt(this.span.css("height"))/2);
+        var t = parseInt(e.clientY - (parseInt(this.xq_l_t.offset().top) - parseInt($(document).scrollTop())) - parseInt(this.span.css("height"))/2);
         // console.log(l,t)
 
         if(l<0) l=0;
