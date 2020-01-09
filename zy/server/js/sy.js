@@ -37,7 +37,7 @@ class sY{
                     zIndex:99,
                     background:"rgba(0, 0, 0, .5)"
                 }).appendTo("body");
-                $("<div>你还没有登录，去<a href='./signln.html'>登录</a>吧</div>").css({
+                $("<div>你还没有登录，去<a href='./signIn.html'>登录</a>吧</div>").css({
                         width:400,
                         height:400,
                         zIndex:100,
@@ -181,3 +181,4 @@ class sY{
     }
     
 }
+new sY;
