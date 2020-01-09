@@ -29,7 +29,7 @@
                             <li><a href="##" rel="nofollow">资金管理</a></li>
                         </ul>
                     </li>
-                    <li><a href="./shoppingCart.html"><i></i>我的购物车<i></i><b></b></a></li>
+                    <li><a href="##" class="qcart"><i></i>我的购物车<i></i><b></b></a></li>
                     <li><a href="##">积分商城</a></li>
                     <li><a href="##"><i></i>手机逛鲜美</a>
                         <ul class="sj">
@@ -906,6 +906,9 @@
             this.li3 = $(".top_l").find(".t_l_3");
             this.li4 = $(".top_l").find(".t_l_4");
             this.xq_l_t = $(".xq_l").find(".xq_l_t");
+
+            this.qcart = $("#top_bar").find(".qcart");
+
             this.url = "../json/csearch.json";
             this.cde();
             
@@ -929,6 +932,7 @@
 
             if(on){
                 // 登录成功
+                this.on = true;
                 this.dloff = 1;
                 var manestr = `<a href="##">${this.msg[this.i].user}，欢迎光临美鲜冻品商城</a>`;
                 this.li1.html(manestr);
@@ -945,6 +949,8 @@
 
             }else{
                 // 没有登录
+                this.on = false;
+
                 this.dloff = 0;
                 var manestr = `<a href="##">欢迎光临美鲜冻品商城</a>`;
                 this.li1.html(manestr);
@@ -964,6 +970,44 @@
             //事件函数内部取不到实例的this，这里将this声明为that
 
             var that = this;
+            this.qcart.on("click",function(){
+                if(that.on){
+                    location.href ="./shoppingCart.html";
+                }else{
+                    $("<div class='mssc'></div>").css({
+                        width:"100%",
+                        height:"100%",
+                        position:"fixed",
+                        top:0,
+                        zIndex:99,
+                        background:"rgba(0, 0, 0, .5)"
+                    }).appendTo("body");
+                    $("<div>你还没有登录，去<a href='./signln.html'>登录</a>吧</div>").css({
+                            width:400,
+                            height:400,
+                            zIndex:100,
+                            background:"#fff",
+                            border:"1px solid #0f0",
+                            fontSize:"16px",
+                            borderRadius:"10px",
+                            lineHeight:"400px",
+                            textAlign:"center",
+                            position:"absolute",
+                            left:0,
+                            right:0,
+                            top:0,
+                            bottom:0,
+                            margin:"auto"
+                        }).appendTo(".mssc");
+                        setTimeout(() => {
+                            $(".mssc").remove();
+                        }, 3000);
+                }
+            })
+
+
+
+
             this.btn1.on("click",function(){
                 that.txt.val(that.txt.val() - 1)
                 if(that.txt.val()<=0){

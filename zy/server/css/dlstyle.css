@@ -87,6 +87,7 @@ blockquote:before, blockquote:after, q:before, q:after {
       #dl form .login_nr #username {
         width: 300px;
         height: 36px;
+        margin: 20px 0;
         line-height: 36px;
         border: 1px solid #deded3;
         border-radius: 4px;
@@ -95,6 +96,7 @@ blockquote:before, blockquote:after, q:before, q:after {
       #dl form .login_nr #password {
         width: 300px;
         height: 36px;
+        margin: 20px 0 40px 0;
         line-height: 36px;
         border: 1px solid #deded3;
         border-radius: 4px;

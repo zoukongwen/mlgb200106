@@ -31,7 +31,7 @@
                             <li><a href="##" rel="nofollow">资金管理</a></li>
                         </ul>
                     </li>
-                    <li><a href="./shoppingCart.html"><i></i>我的购物车<i></i><b class="cart_num"></b></a></li>
+                    <li><a href="##" class="qcart"><i></i>我的购物车<i></i><b class="cart_num"></b></a></li>
                     <li><a href="##">积分商城</a></li>
                     <li><a href="##"><i></i>手机逛鲜美</a>
                         <ul class="sj">
@@ -42,13 +42,6 @@
                     </li>
                     <li><a href="##"><i></i>网站地图</a></li>
                 </ul>
-                
-                    
-                
-                
-                
-                
-
             </div>
         </div>
     </div>
@@ -973,7 +966,8 @@
             this.li3 = $(".top_l").find(".t_l_3");
             this.li4 = $(".top_l").find(".t_l_4");
             this.cartNum = $(".top_r").find(".cart_num");
-
+            
+            this.qcart = $("#top_bar").find(".qcart");
 
 
             this.text = $("#active_top").find(".text");
@@ -989,6 +983,40 @@
         }
         addEvent(){
             var that = this;
+            this.qcart.on("click",function(){
+                if(that.on){
+                    location.href ="./shoppingCart.html";
+                }else{
+                    $("<div class='mssc'></div>").css({
+                        width:"100%",
+                        height:"100%",
+                        position:"fixed",
+                        top:0,
+                        zIndex:99,
+                        background:"rgba(0, 0, 0, .5)"
+                    }).appendTo("body");
+                    $("<div>你还没有登录，去<a href='./signln.html'>登录</a>吧</div>").css({
+                            width:400,
+                            height:400,
+                            zIndex:100,
+                            background:"#fff",
+                            border:"1px solid #0f0",
+                            fontSize:"16px",
+                            borderRadius:"10px",
+                            lineHeight:"400px",
+                            textAlign:"center",
+                            position:"absolute",
+                            left:0,
+                            right:0,
+                            top:0,
+                            bottom:0,
+                            margin:"auto"
+                        }).appendTo(".mssc");
+                        setTimeout(() => {
+                            $(".mssc").remove();
+                        }, 3000);
+                }
+            })
             this.ss_ul.on("click","a",function(){
                 var a = this;
                 that.cxq(a);
@@ -1074,6 +1102,7 @@
             })
 
             if(on){
+                this.on = true;
                 // 登录成功
                 var manestr = `<a href="##">${msg[i].user}，欢迎光临美鲜冻品商城</a>`;
                 this.li1.html(manestr);
@@ -1089,6 +1118,7 @@
                 // (msg[i].user+"goodid")
 
             }else{
+                this.on = false;
                 // 没有登录
                 var manestr = `<a href="##">欢迎光临美鲜冻品商城</a>`;
                 this.li1.html(manestr);
