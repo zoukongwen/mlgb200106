@@ -960,7 +960,7 @@
                         zIndex:99,
                         background:"rgba(0, 0, 0, .5)"
                     }).appendTo("body");
-                    $("<div>你还没有登录，去<a href='./signln.html'>登录</a>吧</div>").css({
+                    $("<div>你还没有登录，去<a href='./signIn.html'>登录</a>吧</div>").css({
                             width:400,
                             height:400,
                             zIndex:100,
@@ -1060,12 +1060,22 @@
                             }
                             localStorage.setItem(`${that.msg[that.i].user}goodid`,JSON.stringify(that.pp))
                     }else{
-                        $("<div class='mssc'>你还没有登录，去<a href='./signln.html'>登录</a>吧</div>").css({
+                        $("<div class='mssc'></div>").css({
+                        width:"100%",
+                        height:"100%",
+                        position:"fixed",
+                        top:0,
+                        zIndex:99,
+                        background:"rgba(0, 0, 0, .5)"
+                    }).appendTo("body");
+                    $("<div>你还没有登录，去<a href='./signIn.html'>登录</a>吧</div>").css({
                             width:400,
                             height:400,
+                            zIndex:100,
                             background:"#fff",
                             border:"1px solid #0f0",
                             fontSize:"16px",
+                            borderRadius:"10px",
                             lineHeight:"400px",
                             textAlign:"center",
                             position:"absolute",
@@ -1074,7 +1084,7 @@
                             top:0,
                             bottom:0,
                             margin:"auto"
-                        }).appendTo("body");
+                        }).appendTo(".mssc");
                         setTimeout(() => {
                             $(".mssc").remove();
                         }, 3000);
