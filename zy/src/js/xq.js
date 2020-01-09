@@ -185,6 +185,34 @@ class Magnifier{
                 }
             }
             localStorage.setItem(`${that.msg[that.i].user}goodid`,JSON.stringify(that.pp))
+            $("<div class='mssc'></div>").css({
+                width:"100%",
+                height:"100%",
+                position:"fixed",
+                top:0,
+                zIndex:99,
+                background:"rgba(0, 0, 0, .5)"
+            }).appendTo("body");
+            $("<div>加入成功</div>").css({
+                    width:400,
+                    height:400,
+                    zIndex:100,
+                    background:"#fff",
+                    border:"1px solid #0f0",
+                    fontSize:"16px",
+                    borderRadius:"10px",
+                    lineHeight:"400px",
+                    textAlign:"center",
+                    position:"absolute",
+                    left:0,
+                    right:0,
+                    top:0,
+                    bottom:0,
+                    margin:"auto"
+                }).appendTo(".mssc");
+                setTimeout(() => {
+                    $(".mssc").remove();
+                }, 1000);
     }else{
         // 没有登录
         $("<div class='mssc'></div>").css({
