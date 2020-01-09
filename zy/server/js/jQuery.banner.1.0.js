@@ -79,7 +79,7 @@
 
 //现在做按钮功能，切换图片
         this._lyobj.leftClick = function(){
-            console.log("左")
+            // console.log("左")
             
             if(that._lyobj.index == 0){
                 
@@ -89,12 +89,12 @@
                 that._lyobj.iPrev = that._lyobj.index;
                 that._lyobj.index--;
             }
-            console.log(that._lyobj.index)
+            // console.log(that._lyobj.index)
             // console.log(that._lyobj.iPrev)
             that._lyobj.btnMove(-1);
         }
         this._lyobj.rightClick = function(){
-            console.log("右")
+            // console.log("右")
             if(that._lyobj.index == that._lyobj.img.length / 4-1){
                 
                 that._lyobj.index = 0;
@@ -103,7 +103,7 @@
                 that._lyobj.iPrev = that._lyobj.index;
                 that._lyobj.index++;
             }
-            console.log(that._lyobj.index)
+            // console.log(that._lyobj.index)
             // console.log(that._lyobj.iPrev)
             that._lyobj.btnMove(-1);
 
@@ -112,11 +112,11 @@
         // 这里是页面的渲染方法
         this._lyobj.btnMove = function(type){
             // let images = that.find(".imgbox");
-            console.log(that.find(".imgbox").eq(0))
+            // console.log(that.find(".imgbox").eq(0))
             that.find(".imgbox").eq(0).stop().animate({
                 left:this.wid * type * this.index * 4
             },this.moveTime);
-            console.log(this.index)
+            // console.log(this.index)
         // .end().eq(this.index).css({
         //         left:- this.wid * type
         //     }).stop().animate({
