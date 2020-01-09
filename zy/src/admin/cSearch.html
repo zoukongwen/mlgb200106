@@ -885,6 +885,7 @@
             this.btn = $("#searchForm").find("#search_form");
             this.ss_ul = $(".ss_b").find("ul");
             this.url = "../json/csearch.json";
+            this.sign_ul = $("#top_bar").find(".top_l");
             this.li1 = $(".top_l").find(".t_l_1");
             this.li2 = $(".top_l").find(".t_l_2");
             this.li3 = $(".top_l").find(".t_l_3");
@@ -948,6 +949,17 @@
             })
             this.btn.on("click",function(){
                 that.cSe();
+            })
+            this.sign_ul.on("click",".t_l_4",function(){
+                var msg = localStorage.getItem("userMsg") ? JSON.parse(localStorage.getItem("userMsg")) : [{user:"",pass:"",onoff:0}];
+                var i=0;
+                var on = msg.some((val,index)=>{
+                    i = index;
+                    return val.onoff != 0;
+                })
+                msg[i].onoff = 0;
+                localStorage.setItem("userMsg",JSON.stringify(msg));
+                location.href ="./signIn.html";
             })
         }
         cxq(a){

@@ -12,9 +12,10 @@
     <div id="top_bar">
         <div class="margin">
             <ul class="top_l">
-                <li><a href="##">欢迎光临美鲜冻品商城</a></li>
-                <li><a href="./signIn.html">登录</a><span>|</span></li>
-                <li><a href="./register.html">注册</a></li>
+                <li class="t_l_1" ><a href="##">欢迎光临美鲜冻品商城</a></li>
+                <li class="t_l_2"><a href="./signIn.html">登录</a><span>|</span></li>
+                <li class="t_l_3"><a href="./register.html">注册</a></li>
+                <li class="t_l_4"><a href="##">注销</a></li>
             </ul>
             <div class="top_r">
                 <ul class="t_r_u">
@@ -899,6 +900,11 @@
 <script>
     class Magnifier{
         constructor(){
+            this.sign_ul = $("#top_bar").find(".top_l");
+            this.li1 = $(".top_l").find(".t_l_1");
+            this.li2 = $(".top_l").find(".t_l_2");
+            this.li3 = $(".top_l").find(".t_l_3");
+            this.li4 = $(".top_l").find(".t_l_4");
             this.xq_l_t = $(".xq_l").find(".xq_l_t");
             this.url = "../json/csearch.json";
             this.cde();
@@ -907,104 +913,134 @@
 
             this.text = $("#active_top").find(".text");
             this.butn = $("#active_top").find("#search_form");
-
+            this.init();
             //这里绑定事件
         }
     
 
-    //这里定义绑定的事件
-    addEvent(){
-        //事件函数内部取不到实例的this，这里将this声明为that
-
-        var that = this;
-        this.btn1.on("click",function(){
-            that.txt.val(that.txt.val() - 1)
-            if(that.txt.val()<=0){
-                that.txt.val(1);
-            }
-        });
-        this.btn2.on("click",function(){
-            that.txt.val(parseInt(that.txt.val()) + 1)
-        });
-        this.btn3.on("click",function(){
-            var btn = this;
-            that.btn_3(btn);
-        });
-        this.butn.on("click",function(){
-                localStorage.setItem("cSearch",that.text.val());
-                location.href ="./cSearch.html";
-
-            })
-
-
-
-
-        //这里绑定鼠标进入事件
-        this.xobx.on("mouseover",function(){
-            //这里绑定进入事件的执行事件
-            that.show();
-        });
-        //这里绑定鼠标离开
-        this.xobx.on("mouseout",function(){
-            that.hide();
-        });
-        //这里绑定鼠标移动
-        this.xobx.on("mousemove",function(e){
-
-            // var e = this;
-            // console.log(e)
-            that.move(e);
-        });
-        
-    }
-    btn_3(btn){
-        var that = this;
-        this.msg = localStorage.getItem("userMsg") ? JSON.parse(localStorage.getItem("userMsg")) : [{user:"",pass:"",onoff:0}];
+        init(){
+            var that = this;
+            this.msg = localStorage.getItem("userMsg") ? JSON.parse(localStorage.getItem("userMsg")) : [{user:"",pass:"",onoff:0}];
             this.i=0;
             var on = this.msg.some((val,index)=>{
                 this.i = index;
                 return val.onoff != 0;
+            })
+
+            if(on){
+                // 登录成功
+                this.dloff = 1;
+                var manestr = `<a href="##">${this.msg[this.i].user}，欢迎光临美鲜冻品商城</a>`;
+                this.li1.html(manestr);
+                this.li2.css({
+                    display:"none"
+                })
+                this.li3.css({
+                    display:"none"
+                })
+                this.li4.css({
+                    display:"block"
+                })
+                // (msg[i].user+"goodid")
+
+            }else{
+                // 没有登录
+                this.dloff = 0;
+                var manestr = `<a href="##">欢迎光临美鲜冻品商城</a>`;
+                this.li1.html(manestr);
+                this.li2.css({
+                    display:"block"
+                })
+                this.li3.css({
+                    display:"block"
+                })
+                this.li4.css({
+                    display:"none"
+                })
+            }
+        }
+    //这里定义绑定的事件
+        addEvent(){
+            //事件函数内部取不到实例的this，这里将this声明为that
+
+            var that = this;
+            this.btn1.on("click",function(){
+                that.txt.val(that.txt.val() - 1)
+                if(that.txt.val()<=0){
+                    that.txt.val(1);
+                }
             });
-        if(on){
-        // 登录成功
-        console.log(btn)
+            this.btn2.on("click",function(){
+                that.txt.val(parseInt(that.txt.val()) + 1)
+            });
+            this.btn3.on("click",function(){
+                var btn = this;
+                that.btn_3(btn);
+            });
+            this.butn.on("click",function(){
+                    localStorage.setItem("cSearch",that.text.val());
+                    location.href ="./cSearch.html";
+
+            });
+
+            this.sign_ul.on("click",".t_l_4",function(){
+                    var msg = localStorage.getItem("userMsg") ? JSON.parse(localStorage.getItem("userMsg")) : [{user:"",pass:"",onoff:0}];
+                    var i=0;
+                    var on = msg.some((val,index)=>{
+                        i = index;
+                        return val.onoff != 0;
+                    })
+                    msg[i].onoff = 0;
+                    localStorage.setItem("userMsg",JSON.stringify(msg));
+                    location.href ="./signIn.html";
+            });
+
+
+            //这里绑定鼠标进入事件
+            this.xobx.on("mouseover",function(){
+                //这里绑定进入事件的执行事件
+                that.show();
+            });
+            //这里绑定鼠标离开
+            this.xobx.on("mouseout",function(){
+                that.hide();
+            });
+            //这里绑定鼠标移动
+            this.xobx.on("mousemove",function(e){
+
+                // var e = this;
+                // console.log(e)
+                that.move(e);
+            });
             
-        that.pp = localStorage.getItem(`${that.msg[that.i].user}goodid`) ? JSON.parse(localStorage.getItem(`${that.msg[that.i].user}goodid`)):[];
-                            if(that.pp.length == 0){
-                                that.pp = [{goodId:btn.getAttribute("index"),num:this.txt.val()}];
-                            }else{
-                                var j = 0;
-                                var offon = that.pp.some((val,idx)=>{
-                                    j = idx
-                                    return val.goodId == btn.getAttribute("index");
-                                })
-                                if(offon){
-                                    that.pp[j].num = parseInt(this.pp[j].num) + parseInt(this.txt.val());
-                                }else{
-                                    that.pp.push({goodId:btn.getAttribute("index"),num:this.txt.val()});
-                                }
-                            }
-                            localStorage.setItem(`${that.msg[that.i].user}goodid`,JSON.stringify(that.pp))
-
-
-            // this.pp = localStorage.getItem("goodid") ? JSON.parse(localStorage.getItem("goodid")):[];
-            //     if(this.pp.length == 0){
-            //         this.pp = [{goodId:btn.getAttribute("index"),num:this.txt.val()}];
-            //     }else{
-            //         var j = 0;
-            //         var offon = this.pp.some((val,idx)=>{
-            //             j = idx
-            //             return val.goodId == btn.getAttribute("index")
-            //         })
-            //         console.log(j);
-            //         if(offon){
-            //             this.pp[j].num = parseInt(this.pp[j].num) + parseInt(this.txt.val());
-            //         }else{
-            //             this.pp.push({goodId:btn.getAttribute("index"),num:this.txt.val()});
-            //         }
-            //     }
-            //     localStorage.setItem("goodid",JSON.stringify(this.pp));
-           
+        }
+        btn_3(btn){
+            var that = this;
+            this.msg = localStorage.getItem("userMsg") ? JSON.parse(localStorage.getItem("userMsg")) : [{user:"",pass:"",onoff:0}];
+                this.i=0;
+                var on = this.msg.some((val,index)=>{
+                    this.i = index;
+                    return val.onoff != 0;
+                });
+            if(on){
+            // 登录成功
+            console.log(btn)
+            that.pp = localStorage.getItem(`${that.msg[that.i].user}goodid`) ? JSON.parse(localStorage.getItem(`${that.msg[that.i].user}goodid`)):[];
+                if(that.pp.length == 0){
+                    that.pp = [{goodId:btn.getAttribute("index"),num:this.txt.val()}];
+                }else{
+                    var j = 0;
+                    var offon = that.pp.some((val,idx)=>{
+                        j = idx
+                        return val.goodId == btn.getAttribute("index");
+                    })
+                    if(offon){
+                        that.pp[j].num = parseInt(this.pp[j].num) + parseInt(this.txt.val());
+                    }else{
+                        that.pp.push({goodId:btn.getAttribute("index"),num:this.txt.val()});
+                    }
+                }
+                localStorage.setItem(`${that.msg[that.i].user}goodid`,JSON.stringify(that.pp))
         }else{
             // 没有登录
             $("<div class='mssc'>你还没有登录，去<a href='./signln.html'>登录</a>吧</div>").css({

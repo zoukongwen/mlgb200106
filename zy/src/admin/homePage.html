@@ -752,7 +752,7 @@
             </ul>
         </div>
     </div>
-    <div class="loft paresale_index">
+    <div class="loft paresale_index" id="lc2">
         <div class="margin">
             <div class="loft_t">
                 <div class="loft_t_l">
@@ -832,7 +832,7 @@
         </div>
         
     </div>
-    <div class="floot">
+    <div class="floot" id="floot">
         <div class="margin">
             <div class="floot_1">
                     <ul class="w1200">
@@ -951,10 +951,10 @@
     </div>
     <div id="nume">
         <ul>
-            <li id="part1"><a rel="#loft1" href="javascript:void(0)" class="">1</a></li>
-            <li id="part2"><a rel="#loft2" href="javascript:void(0)" class="">2</a></li>
-            <li id="part2"><a rel="#loft2" href="javascript:void(0)" class="">3</a></li>
-            <li id="part2"><a rel="#loft2" href="javascript:void(0)" class="">4</a></li>
+            <li id="part1"><a rel="#loft1" href="#top" class="">1</a></li>
+            <li id="part2"><a rel="#loft2" href="#lc2" class="">2</a></li>
+            <li id="part2"><a rel="#loft2" href="#tc" class="">3</a></li>
+            <li id="part2"><a rel="#loft2" href="#floot" class="">4</a></li>
         </ul>
     </div>
 </body>
@@ -967,6 +967,7 @@
         constructor(){
             this.banner = $(".banner1");
             this.ss_ul = $(".flot_tab").find("ul");
+            this.sign_ul = $("#top_bar").find(".top_l");
             this.li1 = $(".top_l").find(".t_l_1");
             this.li2 = $(".top_l").find(".t_l_2");
             this.li3 = $(".top_l").find(".t_l_3");
@@ -997,6 +998,18 @@
                 location.href ="./cSearch.html";
 
             })
+            this.sign_ul.on("click",".t_l_4",function(){
+                var msg = localStorage.getItem("userMsg") ? JSON.parse(localStorage.getItem("userMsg")) : [{user:"",pass:"",onoff:0}];
+                var i=0;
+                var on = msg.some((val,index)=>{
+                    i = index;
+                    return val.onoff != 0;
+                })
+                msg[i].onoff = 0;
+                localStorage.setItem("userMsg",JSON.stringify(msg));
+                location.href ="./signIn.html";
+            })
+
                 
         }
         cxq(a){
